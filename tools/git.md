@@ -855,7 +855,7 @@ Git分支十分强大，在团队开发中应该充分应用。
 - 本地新建的分支如果不推送到远程，对其他人就是不可见的；
 - 从本地推送分支，使用`git push origin branch-name`，如果推送失败，先用`git pull`抓取远程的新提交；
 - 在本地创建和远程分支对应的分支，使用`git checkout -b branch-name origin/branch-name`，本地和远程分支的名称最好一致；
-- 建立本地分支和远程分支的关联，使用`git branch --set-upstream branch-name origin/branch-name`；
+- 建立本地分支和远程分支的关联，使用`git branch --set-upstream-to=origin/branch-name`；
 - 从远程抓取分支，使用`git pull`，如果有冲突，要先处理冲突。
 
 
@@ -888,3 +888,19 @@ $ git push origin dev
 - `dev`分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；
 - bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；
 - feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。
+
+
+
+
+
+假设当前分支为master，需要创建的分支是my-test
+
+```shell
+git checkout -b my-test  //在当前分支下创建my-test的本地分支分支
+git push origin my-test  //将my-test分支推送到远程
+git branch --set-upstream-to=origin/my-test //将本地分支my-test关联到远程分支my-test上   
+git branch -a //查看远程分支 
+```
+
+此时远程分支my-test已经创建好了，并且本地的分支已经关联到远程分支上
+本地push代码以后会push到关联的远程分支上。
